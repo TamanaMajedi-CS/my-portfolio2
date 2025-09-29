@@ -1,0 +1,360 @@
+:root {
+  --bg: #0b0e14;
+  --panel: #101521;
+  --text: #e8ecf2;
+  --muted: #9aa4b2;
+  --brand: #6ea8fe;
+  --accent: #00d1b2;
+  --danger: #ff6b6b;
+  --card: #0f1422;
+  --border: #1d2333;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  --radius: 14px;
+  --font: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --bg: #f7f8fb;
+  --panel: #ffffff;
+  --text: #0b0e14;
+  --muted: #5c6a7a;
+  --brand: #3a7afe;
+  --accent: #0bb;
+  --danger: #e84a5f;
+  --card: #ffffff;
+  --border: #e6e9f2;
+}
+
+/* Ocean theme */
+[data-theme="ocean"] {
+  --bg: #06141c;
+  --panel: #0a1f2a;
+  --text: #e6f7ff;
+  --muted: #99c2d6;
+  --brand: #29b6f6;
+  --accent: #00e5ff;
+  --danger: #ff8a80;
+  --card: #0c2430;
+  --border: #103444;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main.container {
+  flex: 1;
+}
+
+/* Utility */
+.grid {
+  display: grid;
+  gap: 24px;
+}
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 900px) {
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+.btn {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn:focus-visible {
+  outline: 3px solid var(--brand);
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn.primary {
+  background: var(--brand);
+  color: white;
+  border: none;
+}
+.btn.ghost {
+  background: transparent;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+.badge.featured {
+  background: linear-gradient(90deg, #ffd86a, #ffb03a);
+  color: #2b1900;
+  border: none;
+}
+.tech {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 0.8rem;
+}
+.muted {
+  color: var(--muted);
+}
+
+/* Navbar / Footer */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: saturate(180%) blur(8px);
+  background: color-mix(in oklab, var(--panel) 70%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.nav a {
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+.nav a.active {
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+.spacer {
+  flex: 1;
+}
+
+/* Header */
+.header {
+  padding: 28px;
+  border-radius: 20px;
+  background: radial-gradient(
+      1200px 400px at 10% -20%,
+      rgba(110, 168, 254, 0.3),
+      transparent 40%
+    ),
+    radial-gradient(
+      1200px 400px at 110% -10%,
+      rgba(0, 209, 178, 0.3),
+      transparent 40%
+    ),
+    var(--panel);
+  border: 1px solid var(--border);
+}
+.header h1 {
+  margin: 0 0 6px;
+}
+.header p {
+  margin: 0;
+}
+
+/* Forms */
+.input,
+textarea {
+  width: 100%;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  font: inherit;
+}
+.input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid color-mix(in oklab, var(--brand) 60%, white);
+}
+.error {
+  font-size: 0.85rem;
+  color: var(--danger);
+  margin-top: 6px;
+}
+
+/* Progress bar (accessible) */
+.progress {
+  height: 10px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress > span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--brand), var(--accent));
+}
+
+/* Animations */
+.fade-in {
+  animation: fade 0.35s ease both;
+}
+.slide-in {
+  animation: slide 0.35s ease both;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes slide {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Scroll progress */
+.scrollbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brand), var(--accent));
+  width: 0;
+  z-index: 999;
+}
+/* ---------- Hover borders (works in all modern browsers) ---------- */
+.card,
+.header,
+.btn,
+.input,
+textarea,
+.badge,
+.tech,
+.nav a {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+/* Boxes */
+.card:hover,
+.header:hover {
+  border-color: var(--brand);
+}
+
+/* Buttons */
+.btn:hover {
+  border-color: var(--accent);
+}
+.btn.primary:hover {
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+/* Inputs */
+.input:hover,
+textarea:hover {
+  border-color: var(--brand);
+}
+
+/* Badges & tech chips */
+.badge:hover,
+.tech:hover {
+  border-color: var(--accent);
+}
+
+/* Nav links */
+.nav a:hover {
+  box-shadow: inset 0 0 0 1px var(--brand);
+}
+/* Icon hover: color only (no borders/rings) */
+.nav a svg,
+.btn svg,
+footer a svg {
+  transition: color 0.2s ease, filter 0.2s ease;
+}
+
+/* recolor icons on hover */
+.nav a:hover svg,
+.btn:hover svg,
+footer a:hover svg {
+  color: var(--accent);
+  filter: brightness(1.1);
+}
+
+
+footer a:hover {
+  box-shadow: none !important;
+}
+/* Make filter buttons pop against the dark panel */
+.btn { color: var(--text); }                    /* ensure readable text */
+.btn:not(.primary) {
+  background: #141a2a;                          /* a shade lighter than var(--panel) */
+  border-color: #2a3348;                        /* clearer outline */
+}
+
+
+.btn:not(.primary):hover { border-color: var(--brand); }
+.btn:not(.primary):focus-visible { outline: 3px solid var(--brand); }
+
+
+.btn.primary { background: var(--brand); color: #fff; }
+
+
+[data-theme="light"] .btn:not(.primary) {
+  background: #ffffff;
+  border-color: #e6e9f2;
+  color: #0b0e14;
+}
+
